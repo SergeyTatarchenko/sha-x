@@ -84,7 +84,6 @@ uint32_t sha_1::GetNumberOfBlocks(uint32_t NumOfSymbols)
     cout<<"LastWord:"<<WordBalance<<endl;
     cout<<"blocks : " <<this->NumOfBlocks<<endl;
     cout<<"balance: "<<this->Balance<<endl;
-    cout<<"*******************************"<<endl;
     return Blocks;
 }
 
@@ -138,25 +137,12 @@ uint32_t sha_1::BigEndianConvert32(uint32_t LittleEndian)
 void sha_1::CaclChecksum( void )
 {
     uint32_t a,b,c,d,e;
-    unsigned char *pointer;
-    uint32_t temp;
-
     /*first init with constants*/
     HA = H0;
     HB = H1;
     HC = H2;
     HD = H3;
     HE = H4;
-
-    pointer = (unsigned char*)BlockBuff;
-
-    for(int i = 0; i < this->BlockSize; i++ )
-        {
-            temp = pointer[i];
-            cout<<i<<"   "<<pointer[i]<<"   ";
-            cout<<hex<<temp<<endl;
-        }
-
 
     for(uint32_t BlockCounter = 0;BlockCounter < this->NumOfBlocks; BlockCounter++ )
     {
@@ -258,9 +244,7 @@ void sha_1::CaclChecksum( void )
         HE = HE + e;
         MemPointer+=BlockSize;
     }
-
-
-    cout<<"*******************************"<<endl;
+    cout<<"*********log output************"<<endl;
     cout<<"Hash 0 : "<<hex<<HA<<endl;
     cout<<"Hash 1 : "<<hex<<HB<<endl;
     cout<<"Hash 2 : "<<hex<<HC<<endl;

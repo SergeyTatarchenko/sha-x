@@ -80,11 +80,10 @@ int main(int argc, char *argv[])
             FileWritter<<hex<<SHA_1.HE;
 
             FileWritter.close();
-            delete[] SHA_1.MemPointer;
-        }
+            }
         else
             {
-                cout<<"error"<<endl;
+                cout<<"input error"<<endl;
             }
 
     return 0;
